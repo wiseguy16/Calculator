@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		4AF0DF571D412B77002DB340 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0DF561D412B77002DB340 /* main.m */; };
 		4AF0DF5A1D412B77002DB340 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0DF591D412B77002DB340 /* AppDelegate.m */; };
-		4AF0DF5D1D412B77002DB340 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0DF5C1D412B77002DB340 /* ViewController.m */; };
 		4AF0DF601D412B77002DB340 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AF0DF5E1D412B77002DB340 /* Main.storyboard */; };
 		4AF0DF621D412B77002DB340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF0DF611D412B77002DB340 /* Assets.xcassets */; };
 		4AF0DF651D412B77002DB340 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AF0DF631D412B77002DB340 /* LaunchScreen.storyboard */; };
+		4AF0DF6E1D412BEF002DB340 /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0DF6D1D412BEF002DB340 /* CalculatorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +20,12 @@
 		4AF0DF561D412B77002DB340 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4AF0DF581D412B77002DB340 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4AF0DF591D412B77002DB340 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4AF0DF5B1D412B77002DB340 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4AF0DF5C1D412B77002DB340 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4AF0DF5F1D412B77002DB340 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4AF0DF611D412B77002DB340 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AF0DF641D412B77002DB340 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4AF0DF661D412B77002DB340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AF0DF6C1D412BEF002DB340 /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		4AF0DF6D1D412BEF002DB340 /* CalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +60,8 @@
 			children = (
 				4AF0DF581D412B77002DB340 /* AppDelegate.h */,
 				4AF0DF591D412B77002DB340 /* AppDelegate.m */,
-				4AF0DF5B1D412B77002DB340 /* ViewController.h */,
-				4AF0DF5C1D412B77002DB340 /* ViewController.m */,
+				4AF0DF6C1D412BEF002DB340 /* CalculatorViewController.h */,
+				4AF0DF6D1D412BEF002DB340 /* CalculatorViewController.m */,
 				4AF0DF5E1D412B77002DB340 /* Main.storyboard */,
 				4AF0DF611D412B77002DB340 /* Assets.xcassets */,
 				4AF0DF631D412B77002DB340 /* LaunchScreen.storyboard */,
@@ -149,8 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AF0DF5D1D412B77002DB340 /* ViewController.m in Sources */,
 				4AF0DF5A1D412B77002DB340 /* AppDelegate.m in Sources */,
+				4AF0DF6E1D412BEF002DB340 /* CalculatorViewController.m in Sources */,
 				4AF0DF571D412B77002DB340 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
