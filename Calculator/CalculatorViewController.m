@@ -11,7 +11,9 @@
 @interface CalculatorViewController ()
 
 {
-    // Instance variables
+    // Instance variables:
+    // Not using this time.
+    // Making all "variables" as properties
     
     
 }
@@ -44,7 +46,7 @@
     self.storedOperatorAsAString = [[NSMutableString alloc] init];
     self.currentTextForLabel = [[NSMutableString alloc] init];
     self.resultAsAString = [[NSMutableString alloc] init];
-    //self.panicStateSoReset = NO;
+//  self.panicStateSoReset = NO;
     self.countOfOperatorsPressed = 0;
 
     
@@ -72,14 +74,7 @@
         NSLog(@"First number is %@", self.currentTextForLabel);
         NSLog(@"First actual number is %f", self.firstNumberAsADouble);
         NSLog(@"Panic stat is %d", self.panicStateSoReset);
-        
-        
-        /*
-         NSMutableString *str = [[NSMutableString alloc] init];
-         [str setString:@"123.4"];
-         float f = [str floatValue];
-         */
-    }
+           }
     else
     {
         [self.secondNumberAsAString appendString:sender.currentTitle];
@@ -130,49 +125,28 @@
 {
     
     // PUT A BUNCH OF IF STATEMENTS HERE!!!!!
-//    if (self.countOfOperatorsPressed == 1)
-//{
+
     if ([self.operatorAsAString  isEqual: @"+"])
-    {
+{
     self.resultAsADouble =  self.firstNumberAsADouble + self.secondNumberAsADouble;
-        
-    
     }
     else if ([self.operatorAsAString  isEqual: @"-"])
     {
       self.resultAsADouble =  self.firstNumberAsADouble - self.secondNumberAsADouble;
-       
     }
     else if ([self.operatorAsAString  isEqual: @"*"])
     {
       self.resultAsADouble =  self.firstNumberAsADouble * self.secondNumberAsADouble;
-        
     }
     else if ([self.operatorAsAString  isEqual: @"÷"])
     {
        self.resultAsADouble =  self.firstNumberAsADouble / self.secondNumberAsADouble;
-        
     }
     else
     {
         self.resultAsADouble =  0;
     }
         
-//}
-//    else
-//    {
-//        self.firstNumberAsADouble = 0;
-//        self.secondNumberAsADouble = 0;
-//        self.resultAsADouble = 0;
-//        [self.firstNumberAsAString setString:@""];
-//        [self.secondNumberAsAString setString:@""];
-//        [self.operatorAsAString setString:@""];
-//        [self.operatorAsAString isEqual:@""];
-//        [self.currentTextForLabel setString:@""];
-//        self.countOfOperatorsPressed = 0;
-//        [self updateTheLabel];
-//
-//    }
     
     
     self.currentTextForLabel = [NSMutableString stringWithFormat:@"%f", self.resultAsADouble];            //[NSString stringWithFormat:@"%f", self.resultAsADouble];
@@ -196,16 +170,6 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - Misc methods - method for updating the label
 
