@@ -97,7 +97,31 @@
 
 - (IBAction)equalsTapped:(UIButton *)sender
 {
+    
+    // PUT A BUNCH OF IF STATEMENTS HERE!!!!!
+    if ([self.operatorAsAString  isEqual: @"+"])
+    {
     self.resultAsADouble =  self.firstNumberAsADouble + self.secondNumberAsADouble;
+    
+    }
+    else if ([self.operatorAsAString  isEqual: @"-"])
+    {
+      self.resultAsADouble =  self.firstNumberAsADouble - self.secondNumberAsADouble;
+    }
+    else if ([self.operatorAsAString  isEqual: @"*"])
+    {
+      self.resultAsADouble =  self.firstNumberAsADouble * self.secondNumberAsADouble;
+    }
+    else if ([self.operatorAsAString  isEqual: @"÷"])
+    {
+       self.resultAsADouble =  self.firstNumberAsADouble / self.secondNumberAsADouble;
+    }
+    else
+    {
+        self.resultAsADouble =  0;
+    }
+    
+    
     self.currentTextForLabel = [NSMutableString stringWithFormat:@"%f", self.resultAsADouble];            //[NSString stringWithFormat:@"%f", self.resultAsADouble];
     [self updateTheLabel];
 }
