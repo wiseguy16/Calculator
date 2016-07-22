@@ -28,6 +28,8 @@
 @property double firstNumberAsADouble;
 @property double secondNumberAsADouble;
 @property double resultAsADouble;
+@property BOOL panicStateSoReset;
+@property int countOfOperatorsPressed;
 
 
 @end
@@ -42,6 +44,8 @@
     self.storedOperatorAsAString = [[NSMutableString alloc] init];
     self.currentTextForLabel = [[NSMutableString alloc] init];
     self.resultAsAString = [[NSMutableString alloc] init];
+    //self.panicStateSoReset = NO;
+    self.countOfOperatorsPressed = 0;
 
     
     // Do any additional setup after loading the view.
@@ -54,6 +58,10 @@
 
 #pragma mark - Action Handlers
 
+
+
+#pragma mark - Numbers were tapped here
+
 - (IBAction)numberTapped:(UIButton *)sender
 {
     if ([self.operatorAsAString isEqual:@""])
@@ -62,13 +70,13 @@
         self.currentTextForLabel = self.firstNumberAsAString;
         self.firstNumberAsADouble = self.firstNumberAsAString.doubleValue;
         NSLog(@"First number is %@", self.currentTextForLabel);
-         NSLog(@"First actual number is %f", self.firstNumberAsADouble);
+        NSLog(@"First actual number is %f", self.firstNumberAsADouble);
+        NSLog(@"Panic stat is %d", self.panicStateSoReset);
         
         
         /*
          NSMutableString *str = [[NSMutableString alloc] init];
          [str setString:@"123.4"];
-         
          float f = [str floatValue];
          */
     }
@@ -78,53 +86,100 @@
         self.currentTextForLabel = self.secondNumberAsAString;
         self.secondNumberAsADouble = self.secondNumberAsAString.doubleValue;
         NSLog(@"Second number is %@", self.currentTextForLabel);
-         NSLog(@"Second actual number is %f", self.secondNumberAsADouble);
+        NSLog(@"Second actual number is %f", self.secondNumberAsADouble);
     }
     
     [self updateTheLabel];
     
 }
 
+#pragma mark - Operators were tapped here
+
 - (IBAction)operatorTapped:(UIButton *)sender
 {
+    if (self.countOfOperatorsPressed == 0)
+    {
     [self.operatorAsAString appendString:sender.currentTitle];
     self.storedOperatorAsAString = self.operatorAsAString;
     self.currentTextForLabel = self.operatorAsAString;
     NSLog(@"%@", self.operatorAsAString);
     [self updateTheLabel];
+   // self.panicStateSoReset = YES;
+   // NSLog(@"Panic stat is %d", self.panicStateSoReset);
+    self.countOfOperatorsPressed = self.countOfOperatorsPressed + 1;
+    }
+    else
+    {
+        self.firstNumberAsADouble = 0;
+        self.secondNumberAsADouble = 0;
+        self.resultAsADouble = 0;
+        [self.firstNumberAsAString setString:@""];
+        [self.secondNumberAsAString setString:@""];
+        [self.operatorAsAString setString:@""];
+        [self.operatorAsAString isEqual:@""];
+        [self.currentTextForLabel setString:@""];
+        self.countOfOperatorsPressed = 0;
+        [self updateTheLabel];
+    }
 }
+
+#pragma mark -Equals button was tapped here
 
 
 - (IBAction)equalsTapped:(UIButton *)sender
 {
     
     // PUT A BUNCH OF IF STATEMENTS HERE!!!!!
+//    if (self.countOfOperatorsPressed == 1)
+//{
     if ([self.operatorAsAString  isEqual: @"+"])
     {
     self.resultAsADouble =  self.firstNumberAsADouble + self.secondNumberAsADouble;
+        
     
     }
     else if ([self.operatorAsAString  isEqual: @"-"])
     {
       self.resultAsADouble =  self.firstNumberAsADouble - self.secondNumberAsADouble;
+       
     }
     else if ([self.operatorAsAString  isEqual: @"*"])
     {
       self.resultAsADouble =  self.firstNumberAsADouble * self.secondNumberAsADouble;
+        
     }
     else if ([self.operatorAsAString  isEqual: @"÷"])
     {
        self.resultAsADouble =  self.firstNumberAsADouble / self.secondNumberAsADouble;
+        
     }
     else
     {
         self.resultAsADouble =  0;
     }
+        
+//}
+//    else
+//    {
+//        self.firstNumberAsADouble = 0;
+//        self.secondNumberAsADouble = 0;
+//        self.resultAsADouble = 0;
+//        [self.firstNumberAsAString setString:@""];
+//        [self.secondNumberAsAString setString:@""];
+//        [self.operatorAsAString setString:@""];
+//        [self.operatorAsAString isEqual:@""];
+//        [self.currentTextForLabel setString:@""];
+//        self.countOfOperatorsPressed = 0;
+//        [self updateTheLabel];
+//
+//    }
     
     
     self.currentTextForLabel = [NSMutableString stringWithFormat:@"%f", self.resultAsADouble];            //[NSString stringWithFormat:@"%f", self.resultAsADouble];
     [self updateTheLabel];
 }
+
+#pragma mark -Clear button was tapped here
 
 - (IBAction)clearTapped:(UIButton *)sender
 {
@@ -136,6 +191,7 @@
     [self.operatorAsAString setString:@""];
     [self.operatorAsAString isEqual:@""];
     [self.currentTextForLabel setString:@""];
+    self.countOfOperatorsPressed = 0;
      [self updateTheLabel];
 }
 
@@ -151,7 +207,7 @@
 }
 */
 
-#pragma mark - Misc methods
+#pragma mark - Misc methods - method for updating the label
 
 -(void) updateTheLabel
 {
