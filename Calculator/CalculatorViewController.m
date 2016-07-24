@@ -32,6 +32,7 @@
 @property double resultAsADouble;
 @property BOOL panicStateSoReset;
 @property int countOfOperatorsPressed;
+@property BOOL plusMinusTurnedOn;
 
 
 @end
@@ -46,8 +47,9 @@
     self.storedOperatorAsAString = [[NSMutableString alloc] init];
     self.currentTextForLabel = [[NSMutableString alloc] init];
     self.resultAsAString = [[NSMutableString alloc] init];
-//  self.panicStateSoReset = NO;
+    self.panicStateSoReset = NO;
     self.countOfOperatorsPressed = 0;
+    self.plusMinusTurnedOn = NO;
 
     
     // Do any additional setup after loading the view.
@@ -69,12 +71,22 @@
     if ([self.operatorAsAString isEqual:@""])
     {
         [self.firstNumberAsAString appendString:sender.currentTitle];
-        self.currentTextForLabel = self.firstNumberAsAString;
         self.firstNumberAsADouble = self.firstNumberAsAString.doubleValue;
+        self.currentTextForLabel = self.firstNumberAsAString;
+//        if (self.plusMinusTurnedOn == YES)
+//        {
+//            self.firstNumberAsADouble = self.firstNumberAsADouble * -1;
+//            
+//            self.plusMinusTurnedOn = NO;
+//        }
+//        self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.firstNumberAsADouble];
+        
+        
+        
         NSLog(@"First number is %@", self.currentTextForLabel);
         NSLog(@"First actual number is %f", self.firstNumberAsADouble);
         NSLog(@"Panic stat is %d", self.panicStateSoReset);
-           }
+        }
     else
     {
         [self.secondNumberAsAString appendString:sender.currentTitle];
@@ -87,6 +99,29 @@
     [self updateTheLabel];
     
 }
+
+#pragma mark - Plus/Minus Action handler
+
+- (IBAction)plusMinusTapped:(UIButton *)sender
+{
+//    self.plusMinusTurnedOn = YES;
+    
+    if ([self.operatorAsAString isEqual:@""])
+    {
+        self.firstNumberAsADouble = self.firstNumberAsADouble * -1;
+        NSLog(@"First actual number is %f", self.firstNumberAsADouble);
+    }
+    else
+    {
+        self.secondNumberAsADouble = self.secondNumberAsADouble * -1;
+        NSLog(@"Second actual number is %f", self.secondNumberAsADouble);
+
+    }
+    
+     [self updateTheLabel];
+    
+}
+
 
 #pragma mark - Operators were tapped here
 
@@ -138,25 +173,41 @@
     {
       self.resultAsADouble =  self.firstNumberAsADouble * self.secondNumberAsADouble;
     }
-    else if ([self.operatorAsAString  isEqual: @"÷"])
+    else if ([self.operatorAsAString  isEqual: @"÷"])  //(self.secondNumberAsADouble != 0)
     {
+        if (self.secondNumberAsADouble != 0)
+        {
        self.resultAsADouble =  self.firstNumberAsADouble / self.secondNumberAsADouble;
+        }
+        else
+        {
+            self.panicStateSoReset = YES;
+        }
     }
     else
     {
         self.resultAsADouble =  0;
     }
         
-    
-    
-    self.currentTextForLabel = [NSMutableString stringWithFormat:@"%f", self.resultAsADouble];            //[NSString stringWithFormat:@"%f", self.resultAsADouble];
+  if (self.panicStateSoReset != YES)
+  {
+    // %g FIXES TRAILING 0's
+    self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.resultAsADouble];            //[NSString stringWithFormat:@"%f", self.resultAsADouble];
     [self updateTheLabel];
+  }
+    else
+    {
+        // FIXED FOR DIVIDE BY 0
+        self.displayLabel.text = @"Error";
+    }
+    
 }
 
 #pragma mark -Clear button was tapped here
 
 - (IBAction)clearTapped:(UIButton *)sender
 {
+    self.panicStateSoReset = NO;
     self.firstNumberAsADouble = 0;
     self.secondNumberAsADouble = 0;
     self.resultAsADouble = 0;

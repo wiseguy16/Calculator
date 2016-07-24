@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzx-Ym-wtn">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                <rect key="frame" x="8" y="0.0" width="584" height="120"/>
                                 <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="cjB-FN-jR4"/>
@@ -38,21 +38,16 @@
                                     <action selector="clearTapped:" destination="fTd-9S-dmN" eventType="touchUpInside" id="qNm-9D-H9G"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4S-ac-MES">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4S-ac-MES">
                                 <rect key="frame" x="150" y="120" width="150" height="96"/>
                                 <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Coffee!">
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="+/-">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwt-BX-iOJ">
-                                <rect key="frame" x="300" y="120" width="150" height="96"/>
-                                <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Sleep">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <connections>
+                                    <action selector="plusMinusTapped:" destination="fTd-9S-dmN" eventType="touchUpInside" id="7Gf-YN-zEJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYq-y7-gG4">
                                 <rect key="frame" x="0.0" y="216" width="150" height="96"/>
@@ -230,8 +225,16 @@
                                     <action selector="operatorTapped:" destination="fTd-9S-dmN" eventType="touchUpInside" id="oyH-DU-VZM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vwt-BX-iOJ">
+                                <rect key="frame" x="300" y="120" width="150" height="96"/>
+                                <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="%">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="M4S-ac-MES" firstAttribute="width" secondItem="ff7-Ef-9mQ" secondAttribute="width" id="0cu-ag-4lN"/>
                             <constraint firstItem="gQ3-Cu-CNT" firstAttribute="height" secondItem="ff7-Ef-9mQ" secondAttribute="height" id="0uI-jA-vgF"/>
@@ -244,13 +247,13 @@
                             <constraint firstItem="M4S-ac-MES" firstAttribute="leading" secondItem="ff7-Ef-9mQ" secondAttribute="trailing" id="89b-hO-ZgG"/>
                             <constraint firstItem="2wa-hO-8fe" firstAttribute="width" secondItem="ff7-Ef-9mQ" secondAttribute="width" id="8rx-Kf-UtU"/>
                             <constraint firstItem="ff7-Ef-9mQ" firstAttribute="top" secondItem="Dzx-Ym-wtn" secondAttribute="bottom" id="8zG-Ej-EHt"/>
-                            <constraint firstItem="Dzx-Ym-wtn" firstAttribute="leading" secondItem="zXI-SV-RFo" secondAttribute="leading" id="9zj-uK-jYG"/>
+                            <constraint firstItem="Dzx-Ym-wtn" firstAttribute="leading" secondItem="zXI-SV-RFo" secondAttribute="leading" constant="8" id="9zj-uK-jYG"/>
                             <constraint firstItem="Txl-yf-Tl6" firstAttribute="leading" secondItem="LHI-Jy-WJT" secondAttribute="trailing" id="A5E-Xl-OLp"/>
                             <constraint firstAttribute="bottom" secondItem="LHI-Jy-WJT" secondAttribute="bottom" id="Acg-mV-Tqd"/>
                             <constraint firstItem="gQ3-Cu-CNT" firstAttribute="width" secondItem="ff7-Ef-9mQ" secondAttribute="width" id="Ajb-1o-wVb"/>
                             <constraint firstItem="LHI-Jy-WJT" firstAttribute="leading" secondItem="zXI-SV-RFo" secondAttribute="leading" id="B3V-4f-sje"/>
                             <constraint firstItem="Txl-yf-Tl6" firstAttribute="height" secondItem="ff7-Ef-9mQ" secondAttribute="height" id="CCA-eX-4GI"/>
-                            <constraint firstAttribute="trailing" secondItem="Dzx-Ym-wtn" secondAttribute="trailing" id="CH3-Df-RpA"/>
+                            <constraint firstAttribute="trailing" secondItem="Dzx-Ym-wtn" secondAttribute="trailing" constant="8" id="CH3-Df-RpA"/>
                             <constraint firstItem="I5Q-V1-JUi" firstAttribute="top" secondItem="d3L-DS-OFt" secondAttribute="bottom" id="CiS-mb-fPh"/>
                             <constraint firstAttribute="trailing" secondItem="yRd-jr-Caf" secondAttribute="trailing" id="Ctc-DK-85O"/>
                             <constraint firstAttribute="bottom" secondItem="Txl-yf-Tl6" secondAttribute="bottom" id="CyO-Td-Usg"/>
