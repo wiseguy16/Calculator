@@ -145,6 +145,55 @@
    
 }
 
+- (IBAction)squareRootTapped:(UIButton *)sender
+{
+    if ([self.operatorAsAString isEqual:@""])
+    {
+        // MAKE SURE NOT TRYING TO SQUARE ROOT A NEGATIVE!!
+        
+        if (self.firstNumberAsADouble >= 0)
+        {
+        self.firstNumberAsADouble = sqrt(self.firstNumberAsADouble);
+//         NSNumber *firstNumberAsNSNumber;
+//        firstNumberAsNSNumber = [NSNumber numberWithDouble:sqrt(self.firstNumberAsADouble)];
+        self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.firstNumberAsADouble];
+        NSLog(@"First actual number is %f", self.firstNumberAsADouble);
+        }
+        else
+        {
+           self.panicStateSoReset = YES;
+        }
+    }
+    else
+    {
+        if (self.secondNumberAsADouble >= 0)
+        {
+        self.secondNumberAsADouble = sqrt(self.secondNumberAsADouble);
+        self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.secondNumberAsADouble];
+        NSLog(@"Second actual number is %f", self.secondNumberAsADouble);
+        }
+        else
+        {
+              self.panicStateSoReset = YES;
+        }
+        
+    }
+    
+    if (self.panicStateSoReset != YES)
+    {
+        // %g FIXES TRAILING 0's
+       // self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.resultAsADouble];            //[NSString stringWithFormat:@"%f", self.resultAsADouble];
+        [self updateTheLabel];
+    }
+    else
+    {
+        // FIXED FOR DIVIDE BY 0
+        self.displayLabel.text = @"Error";
+    }
+
+}
+
+
 
 #pragma mark - Operators were tapped here
 
