@@ -100,20 +100,22 @@
     
 }
 
-#pragma mark - Plus/Minus Action handler
+#pragma mark - Plus/Minus & Percent Action handlers
 
 - (IBAction)plusMinusTapped:(UIButton *)sender
 {
-//    self.plusMinusTurnedOn = YES;
+
     
     if ([self.operatorAsAString isEqual:@""])
     {
         self.firstNumberAsADouble = self.firstNumberAsADouble * -1;
+        self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.firstNumberAsADouble];
         NSLog(@"First actual number is %f", self.firstNumberAsADouble);
     }
     else
     {
         self.secondNumberAsADouble = self.secondNumberAsADouble * -1;
+        self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.secondNumberAsADouble];
         NSLog(@"Second actual number is %f", self.secondNumberAsADouble);
 
     }
@@ -123,10 +125,34 @@
 }
 
 
+- (IBAction)percentTapped:(UIButton *)sender
+{
+    if ([self.operatorAsAString isEqual:@""])
+    {
+        self.firstNumberAsADouble = self.firstNumberAsADouble / 100;
+        self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.firstNumberAsADouble];
+        NSLog(@"First actual number is %f", self.firstNumberAsADouble);
+    }
+    else
+    {
+        self.secondNumberAsADouble = self.secondNumberAsADouble  / 100;
+        self.currentTextForLabel = [NSMutableString stringWithFormat:@"%g", self.secondNumberAsADouble];
+        NSLog(@"Second actual number is %f", self.secondNumberAsADouble);
+        
+    }
+    
+    [self updateTheLabel];
+   
+}
+
+
 #pragma mark - Operators were tapped here
 
 - (IBAction)operatorTapped:(UIButton *)sender
 {
+    // IF statement addresses if another operator is pressed after 1st calculation
+    // Essentially resets like a clear button
+    
     if (self.countOfOperatorsPressed == 0)
     {
     [self.operatorAsAString appendString:sender.currentTitle];
@@ -181,6 +207,7 @@
         }
         else
         {
+            // This means they are trying to divide by 0, so turn on the panic!
             self.panicStateSoReset = YES;
         }
     }
